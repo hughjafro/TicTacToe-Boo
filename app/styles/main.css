@@ -8,10 +8,10 @@
 body {
     background-color: black;
     color: black;
-    background-image: url('http://media02.hongkiat.com/halloween-wallpapers/Guildwars_halloween.jpg');
+    background-image: url('images/halloweenBack.png');
     background-size: 100%;
     background-position: center;
-    background-position: relative;
+   /* background-position: relative;*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: myHalloweenFont;
@@ -28,7 +28,7 @@ body {
 .box:hover{
     transition-duration: .6s;
     -webkit-transition-property: height, width;
-    background: url('halloweennight.png');
+    background: url('images/halloweennight.png');
     background-size: 110px 120px;
     background-repeat: no-repeat;
 }

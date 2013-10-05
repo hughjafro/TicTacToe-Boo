@@ -20,13 +20,13 @@ $scope.clickSquare = function(row,column) {
 	else 
 		letter = "O";
 
-	this.ticTacToe[row][column] = letter;
-	event.target.innerHTML=letter;
+	// $scope.ticTacToe[row][column] = letter;
+	$scope.ticTacToe[row][column].value=letter;
 	
 	turn++
 		if(turn==9)
 			alert("Game over no more moves");
-	$scope.winningCombo(this.ticTacToe);
+	// $scope.winningCombo(this.ticTacToe);
 
 }; 
 
@@ -34,26 +34,28 @@ $scope.clickSquare = function(row,column) {
 	//if all the columns have the same value
 	//if diagonals are the same
 
-	$scope.winningCombo = function(cellArray) {
-		//Diagonal
-		if($scope.ticTacToe[1][1].val != ""){
-			if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
-			$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
-			$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-			$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val)
-		}
+	// $scope.winningCombo = function(cellArray) {
+	// 	//Diagonal
+	// 	if($scope.ticTacToe[1][1].val != ""){
+	// 		if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
+	// 		$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
+	// 		$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
+	// 		$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val)
+	// 	}
 
 
-		//row
-	(for var r=0; r<=2; ++r) {
-	if($scope.ticTacToe[0][r].val != "" &&
-		$scope.ticTacToe[0][r].val == $scope.ticTacToe[1][r].val &&
-		$scope.ticTacToe[1][r] == $scope.ticTacToe[2][r])
-		alert("WINS");
-	}
+	// 	//row
+	// (for var r=0; r<=2; ++r) {
+	// if($scope.ticTacToe[0][r].val != "" &&
+	// 	$scope.ticTacToe[0][r].val == $scope.ticTacToe[1][r].val &&
+	// 	$scope.ticTacToe[1][r] == $scope.ticTacToe[2][r])
+	// 	alert("WINS");
+	// }
 	
 
-//   });
+ });
+
+// this is my old JS winningCombo code that I need to transfer to AngularJS
 
 // if(cellArray[0] == cellArray[1] && cellArray[1] == cellArray[2] && cellArray[0] != "")
 // 			{champ = cellArray[0];

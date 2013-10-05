@@ -6,8 +6,8 @@
 
 	<div id="container">
 		<div ng-repeat="row in ticTacToe">
-			<div class="box" ng-class="{sqr:true, topLine:$parent.$index != 0, leftLine:$index != 0}" ng-repeat="cell in row" ng-click="clickSquare($parent.$index, $index)">
-			<!-- in newer versions of ng can use track by $index -->
+			<div class="box" ng-class="{sqr:true, topLine:$parent.$index != 0, leftLine:$index != 0}" ng-repeat="cell in row" ng-click="clickSquare(cell)">
+			<!-- in newer versions of ng can use cell in row track by $index -->
 			<!-- {{$parent.$index + "," + $index}} --> <!-- cell + " " + $index -->
 			</div>
 			<div class="clearfix"></div>
