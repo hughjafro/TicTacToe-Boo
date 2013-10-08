@@ -33,7 +33,7 @@ angular.module('TicSackToeApp')
 			alert("Game over no more moves");
 	// $scope.winningCombo(this.ticTacToe);
 
-}; 
+	}; 
 
 // might need to add this scope.turn = {number: 1};
 
@@ -60,6 +60,7 @@ angular.module('TicSackToeApp')
 		// 	$scope.ticTacToe[1][r].val == $scope.ticTacToe[2][r].val)
 		// 	alert("WINS");
 		// }
+	};
 	
 
  });
