@@ -3,25 +3,30 @@
 angular.module('TicSackToeApp')
   .controller('MainCtrl', function ($scope) {
     $scope.ticTacToe=[[{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}]];
+
+    
      
-   var turn = 0;
+	var turn = 0;
 
-$scope.clickSquare = function(row,column) {
+	$scope.clickSquare = function(cell) {
 
-	var letter;
+		// $scope.ticTacToe[row][column] = cell;
+		// $scope.ticTacToe = cell;
+		
+	// var letter;
 
-	if ($scope.ticTacToe[row][column] !="") {
+	if (cell.val !="") {
+		console.log(cell.val);
 	 	return;
 	};
 
 	if ((turn%2==0) && (turn<9))
-		
-		letter = "X";
+		cell.val = "X";
 	else 
-		letter = "O";
+		cell.val = "O";
 
 	// $scope.ticTacToe[row][column] = letter;
-	$scope.ticTacToe[row][column].value=letter;
+	$scope.ticTacToe[cell]=cell.val;
 	
 	turn++
 		if(turn==9)
@@ -30,27 +35,31 @@ $scope.clickSquare = function(row,column) {
 
 }; 
 
+// might need to add this scope.turn = {number: 1};
+
 	//if all the rows have the same value
 	//if all the columns have the same value
 	//if diagonals are the same
 
-	// $scope.winningCombo = function(cellArray) {
-	// 	//Diagonal
-	// 	if($scope.ticTacToe[1][1].val != ""){
-	// 		if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
-	// 		$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
-	// 		$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-	// 		$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val)
-	// 	}
+	$scope.winningCombo = function(cellArray) {
+		//Diagonal
+		// if($scope.ticTacToe[1][1].val != ""){
+
+		// 	if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
+		// 	$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
+		// 	$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
+		// 	$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val) {
+		// 	alert("WINS");
+		// }
 
 
-	// 	//row
-	// (for var r=0; r<=2; ++r) {
-	// if($scope.ticTacToe[0][r].val != "" &&
-	// 	$scope.ticTacToe[0][r].val == $scope.ticTacToe[1][r].val &&
-	// 	$scope.ticTacToe[1][r] == $scope.ticTacToe[2][r])
-	// 	alert("WINS");
-	// }
+		//row
+		// (for var r=0; r<=2; ++r) {
+		// if($scope.ticTacToe[0][r].val != "" &&
+		// 	$scope.ticTacToe[0][r].val == $scope.ticTacToe[1][r].val &&
+		// 	$scope.ticTacToe[1][r].val == $scope.ticTacToe[2][r].val)
+		// 	alert("WINS");
+		// }
 	
 
  });
