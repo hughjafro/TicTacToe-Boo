@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('TicSackToeApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, angularFire) {
     $scope.ticTacToe=[[{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}]];
 
-    
-     
+    var database = new Firebase("https://ticsacktoe.firebaseio.com/");
+    angularFire(database, $scope, "ticTacToe");
+       
 	var turn = 0;
 
 	$scope.clickSquare = function(cell) {

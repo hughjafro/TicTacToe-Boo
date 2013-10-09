@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('TicSackToeApp', [])
+angular.module('TicSackToeApp', ["firebase"])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
