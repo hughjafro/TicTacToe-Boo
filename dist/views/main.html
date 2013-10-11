@@ -1,0 +1,49 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Halloween Tic Tac Toe</title>
+</head>
+<body>
+
+</body>
+</html> -->
+
+<body>
+<header class="blood">Tic Tac Toe</header>
+	
+	
+	
+	
+
+	<div id="container">
+		<div ng-repeat="row in ticTacToe">
+			<div class="box" ng-class="{sqr:true, topLine:$parent.$index != 0, leftLine:$index != 0}" ng-repeat="cell in row" ng-click="clickSquare(cell)" ng-bind="cell.val">
+			<!-- in newer versions of ng can use cell in row track by $index -->
+			<!-- {{$parent.$index + "," + $index}} --> <!-- cell + " " + $index -->
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="popup" id="win()" ng-show=""></div>
+
+			<div class="popup" id="tie()" ng-show=""></div>
+
+			<div id="waiting" ng-show="games[gameId].waiting">Waiting for opponent...</div>
+
+		</div>
+	</div>
+
+		
+			<br> <br>
+			<a href="#" class="button">Exit</a>
+			<a href="#" class="button">New Game</a>
+
+			<div id="buttons">
+				<input class="buttons" type="button" id="btn1" value="New Game" onclick="startPlayAgain()">
+				<input class="buttons" type="button" id="btn2" value="Exit" onclick="navExit()">
+			</div>
+			<!-- <input type="button" id="btn1" placeholder="New Game">
+			<input type="button" id="btn2" placeholder="Exit"> -->
+		
+	
+</body>
