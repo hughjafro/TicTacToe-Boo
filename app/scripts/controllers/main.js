@@ -2,11 +2,41 @@
 
 angular.module('TicSackToeApp')
   .controller('MainCtrl', function ($scope, angularFire) {
-    $scope.ticTacToe=[[{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}], [{val:''},{val:''},{val:''}]];
 
-    var database = new Firebase("https://ticsacktoe.firebaseio.com/");
-    angularFire(database, $scope, "ticTacToe");
+	$scope.ticTacToe=[];
+
+    var database = new Firebase("https://ticsacktoe.firebaseio.com/ticTacToe");
+
+    angularFire(database, $scope, "ticTacToe").then(function()
+    {
+    	$scope.ticTacToe=[[{val:'', r: 0, c: 0},{val:'', r: 0, c: 1},{val:'', r: 0, c: 2}], [{val:'', r: 1, c: 0},{val:'', r: 1, c: 1},{val:'', r: 1, c: 2}], [{val:'', r: 2, c: 0},{val:'', r: 2, c: 1},{val:'', r: 2, c: 2}]];
+    });
        
+    // $scope.room =
+    // {
+    // 	playerTurn: 1,
+    // 	ticTacToe:[[{val:'', r: 0, c: 0},{val:'', r: 0, c: 1},{val:'', r: 0, c: 2}], [{val:'', r: 1, c: 0},{val:'', r: 1, c: 1},{val:'', r: 1, c: 2}], [{val:'', r: 2, c: 0},{val:'', r: 2, c: 1},{val:'', r: 2, c: 2}]],
+    // 	playerNum: 0,
+    // 	gameWin: false,
+    // 	gameTie: false  
+    // }
+
+
+		$scope.gameWin = function() {
+			$scope.winningCombo: true;
+			$scope.winNotify: true;
+		};
+
+		$scope.gameTie = function() {
+			$scope.winningCombo: true;
+			$scope.winNotify: true;
+		};
+
+    // $scope.$watch('room.gameWin') function() {
+
+
+    // }
+
 	var turn = 0;
 
 	$scope.clickSquare = function(cell) {
@@ -29,38 +59,46 @@ angular.module('TicSackToeApp')
 	// $scope.ticTacToe[row][column] = letter;
 	$scope.ticTacToe[cell]=cell.val;
 	
+	$scope.winningCombo(this.ticTacToe);
+	
 	turn++
 		if(turn==9)
 			alert("Game over no more moves");
-	// $scope.winningCombo(this.ticTacToe);
-
 	}; 
 
 // might need to add this scope.turn = {number: 1};
 
-	//if all the rows have the same value
-	//if all the columns have the same value
-	//if diagonals are the same
 
-	$scope.winningCombo = function(cellArray) {
+	$scope.winningCombo = function() {
 		//Diagonal
-		// if($scope.ticTacToe[1][1].val != ""){
+		if($scope.ticTacToe[1][1].val != ""){
 
-		// 	if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
-		// 	$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
-		// 	$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
-		// 	$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val) {
-		// 	alert("WINS");
-		// }
+			if($scope.ticTacToe[0][0].val == $scope.ticTacToe[1][1].val &&
+			$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][2].val ||
+			$scope.ticTacToe[0][2].val == $scope.ticTacToe[1][1].val &&
+			$scope.ticTacToe[1][1].val == $scope.ticTacToe[2][0].val) {
+			alert("WINS");
+			}
+		}
 
 
-		//row
-		// (for var r=0; r<=2; ++r) {
-		// if($scope.ticTacToe[0][r].val != "" &&
-		// 	$scope.ticTacToe[0][r].val == $scope.ticTacToe[1][r].val &&
-		// 	$scope.ticTacToe[1][r].val == $scope.ticTacToe[2][r].val)
-		// 	alert("WINS");
-		// }
+		// //columns
+		for (var c=0; c<=2; ++c) {
+		if($scope.ticTacToe[0][c].val != "" &&
+			$scope.ticTacToe[0][c].val == $scope.ticTacToe[1][c].val &&
+			$scope.ticTacToe[1][c].val == $scope.ticTacToe[2][c].val) {
+			alert("WINS");
+			}
+		}
+
+		//rows
+		for (var r=0; r<=2; ++r) {
+		if($scope.ticTacToe[r][0].val != "" &&
+			$scope.ticTacToe[r][0].val == $scope.ticTacToe[r][1].val &&
+			$scope.ticTacToe[r][1].val == $scope.ticTacToe[r][2].val) {
+			alert("WINS");
+			}
+		}
 	};
 	
 
